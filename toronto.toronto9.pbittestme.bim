@@ -809,7 +809,7 @@
         ],
         "partitions": [
           {
-            "name": "FactInternetSales-87ccebe4-6d54-4a81-b728-079ade5b9291",
+            "name": "FactInternetSales",
             "dataView": "full",
             "source": {
               "type": "m",
@@ -849,6 +849,21 @@
                 "    AdventureWorksDW = Source{[Name=\"AdventureWorksDW\"]}[Data],",
                 "    dbo_FactInternetSales = AdventureWorksDW{[Schema=\"dbo\",Item=\"FactInternetSales\"]}[Data],",
                 "    #\"Filtered Rows\" = Table.SelectRows(dbo_FactInternetSales, each [OrderDate] >= #datetime(2012, 1, 1, 0, 0, 0) and [OrderDate] < #datetime(2013, 1, 1, 0, 0, 0))",
+                "in",
+                "    #\"Filtered Rows\""
+              ]
+            }
+          },
+          {
+            "name": "FactInternetSales 2013",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost\",",
+                "    AdventureWorksDW = Source{[Name=\"AdventureWorksDW\"]}[Data],",
+                "    dbo_FactInternetSales = AdventureWorksDW{[Schema=\"dbo\",Item=\"FactInternetSales\"]}[Data],",
+                "    #\"Filtered Rows\" = Table.SelectRows(dbo_FactInternetSales, each [OrderDate] >= #datetime(2013, 1, 1, 0, 0, 0) and [OrderDate] < #datetime(2014, 1, 1, 0, 0, 0))",
                 "in",
                 "    #\"Filtered Rows\""
               ]
